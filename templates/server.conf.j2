@@ -68,7 +68,7 @@ push "{{ opt }}"
 {% endfor %}
 {% endif %}
 keepalive {{ openvpn_keepalive_ping }} {{ openvpn_keepalive_timeout }}
-{% if openvpn_compression %}
+{% if openvpn_compression|bool %}
 compress {{ openvpn_compression }}
 {% endif %}
 persist-key
