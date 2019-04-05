@@ -48,9 +48,9 @@ install:
 
 script:
   # Check syntax of ansible playbook
-  - sudo docker exec ${OS_TAG} ansible-playbook /etc/ansible/roles/ansible-role-openvpn/tests/test.yml --syntax-check
+  - sudo docker exec ${OS_TAG} ansible-playbook /etc/ansible/roles/ansible-role-openvpn/tests/test.yml --syntax-check -e "ansible_python_interpreter=${PYTHON_PATH}"
   # Run ansible playbook
-  - sudo docker exec ${OS_TAG} ansible-playbook /etc/ansible/roles/ansible-role-openvpn/tests/test.yml -vv
+  - sudo docker exec ${OS_TAG} ansible-playbook /etc/ansible/roles/ansible-role-openvpn/tests/test.yml -vv -e "ansible_python_interpreter=${PYTHON_PATH}"
 
 after_script:
   - sudo docker exec ${OS_TAG} cat /var/log/openvpn.log
