@@ -25,6 +25,8 @@ ci_build: false
 openvpn_fetch_config_dir: /tmp/ansible
 clients: []
 openvpn_push: []
+openvpn_keepalive_ping: 10
+openvpn_keepalive_timeout: 120
 manage_firewall_rules: true
 iptables_service: iptables
 openvpn_client_register_dns: true

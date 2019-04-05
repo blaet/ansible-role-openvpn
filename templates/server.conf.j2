@@ -67,8 +67,8 @@ push "dhcp-option DNS 8.8.4.4"
 push "{{ opt }}"
 {% endfor %}
 {% endif %}
-keepalive 5 30
 compress lzo
+keepalive {{ openvpn_keepalive_ping }} {{ openvpn_keepalive_timeout }}
 persist-key
 persist-tun
 user nobody
