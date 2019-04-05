@@ -7,6 +7,8 @@ openvpn_server_hostname: "{{ inventory_hostname }}"
 openvpn_proto: udp
 openvpn_dualstack: true
 openvpn_rsa_bits: 2048
+openvpn_packet_authentication_algorithm: SHA256
+openvpn_packet_encryption_algorithm: AES-256-CBC
 openvpn_service_name: openvpn
 openvpn_uninstall: false
 openvpn_use_pregenerated_dh_params: false
