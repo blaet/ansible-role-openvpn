@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  author: Kyle Lexmond
+  author: Bram de Vries & Kyle Lexmond
   description: OpenVPN playbook for CentOS/Fedora/RHEL/RHEL clones & Ubuntu/Debian
-
+  role_name: openvpn
   license: GPLv2
   min_ansible_version: 2.4
   #
