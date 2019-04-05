@@ -79,6 +79,19 @@ persist-tun
 user {{ openvpn_service_user }}
 group {{ openvpn_service_group }}
 
+{% if openvpn_script_up %}
+up "{{ openvpn_script_up }}"
+{% endif %}
+{% if openvpn_script_down %}
+down "{{ openvpn_script_down }}"
+{% endif %}
+{% if openvpn_script_client_connect %}
+client-connect "{{ openvpn_script_client_connect }}"
+{% endif %}
+{% if openvpn_script_client_disconnect %}
+client-disconnect "{{ openvpn_script_client_disconnect }}"
+{% endif %}
+
 {% for option in openvpn_addl_server_options %}
 {{ option }}
 {% endfor %}
