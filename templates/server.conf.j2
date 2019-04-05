@@ -23,11 +23,10 @@ tls-auth {{ openvpn_key_dir }}/ta.key 0
 {% endif %}
 tls-server
 auth {{ openvpn_auth_alg | default('SHA256') }}
-cipher AES-256-CBC
+cipher {{ openvpn_packet_encryption_algorithm }}
 {% if openvpn_tun_mtu %}
 tun-mtu {{ openvpn_tun_mtu }}
-{% endif %}
-{% if openvpn_use_hardened_tls|bool %}
+{% endif %}{% if openvpn_use_hardened_tls|bool %}
 tls-version-min 1.2
 {% endif %}
 {# Using Mozilla's modern cipher list + DHE for older clients #}
