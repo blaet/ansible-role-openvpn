@@ -1,7 +1,7 @@
 ---
 - name: restart openvpn
   service:
-    name: "{{openvpn_service_name}}"
+    name: "{{ openvpn_service_name }}"
     state: restarted
 
 - name: restart iptables
