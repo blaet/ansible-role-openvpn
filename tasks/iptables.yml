@@ -47,7 +47,7 @@
     comment: "Allow incoming VPN connection"
   notify: "save iptables"
 
-- name: iptables - Accept packets from VPN tunnel adaptor
+- name: iptables - Accept packets from VPN tunnel adapter
   iptables:
     chain: INPUT
     in_interface: tun0

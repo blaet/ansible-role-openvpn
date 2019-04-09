@@ -23,7 +23,7 @@
     to_port: "{{ openvpn_port }}"
     rule: allow
 
-- name: ufw - Accept packets from VPN tunnel adaptor
+- name: ufw - Accept packets from VPN tunnel adapter
   ufw:
     direction: in
     interface: tun0
