@@ -33,12 +33,12 @@
     comment: "Allow incoming VPN connection"
   notify: "save iptables"
 
-- name: iptables - Accept packets from VPN tunnel adaptor
+- name: iptables - Accept packets from VPN tunnel adapter
   iptables:
     chain: INPUT
     in_interface: tun0
     jump: ACCEPT
-    comment: "Accept packets from VPN tunnel adaptor"
+    comment: "Accept packets from VPN tunnel adapter"
   notify: "save iptables"
 
 - name: iptables - Perform NAT readdressing
