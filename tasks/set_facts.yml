@@ -19,3 +19,7 @@
   set_fact:
     openvpn_base_dir: "/etc/openvpn/server"
   when: ansible_distribution == "Fedora" and ansible_distribution_version|int >= 27
+
+- name: Set NAT rule state
+  set_fact:
+    openvpn_nat_rule_state: "{{ 'present' if openvpn_nat_enabled else 'absent' }}"

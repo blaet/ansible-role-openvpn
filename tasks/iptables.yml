@@ -73,7 +73,11 @@
     chain: POSTROUTING
     source: "{{ openvpn_server_network }}/24"
     jump: MASQUERADE
+<<<<<<< HEAD
     action: insert
+=======
+    state: "{{ openvpn_nat_rule_state }}"
+>>>>>>> Enable NAT disabling
     comment: "Perform NAT readdressing"
   when: openvpn_masquerade_not_snat
   notify: "save iptables"
