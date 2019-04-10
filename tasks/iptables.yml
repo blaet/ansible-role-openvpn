@@ -48,6 +48,7 @@
     source: "{{ openvpn_server_network }}/24"
     to_source: "{{ ansible_default_ipv4.address }}"
     jump: SNAT
+    state: "{{ openvpn_nat_rule_state }}"
     comment: "Perform NAT readdressing"
   when: not openvpn_masquerade_not_snat
 
@@ -57,6 +58,7 @@
     chain: POSTROUTING
     source: "{{ openvpn_server_network }}/24"
     jump: MASQUERADE
+    state: "{{ openvpn_nat_rule_state }}"
     comment: "Perform NAT readdressing"
   when: openvpn_masquerade_not_snat
   notify: "save iptables"
