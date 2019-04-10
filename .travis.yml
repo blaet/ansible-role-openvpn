@@ -38,6 +38,10 @@ env:
       OS=ubuntu
       COMMAND=/bin/systemd --system
 
+matrix:
+  allow_failures:
+    - env: DOCKER_TAG=ubuntu:18.04
+
 before_install:
   - sudo docker pull ${DOCKER_TAG}
 
