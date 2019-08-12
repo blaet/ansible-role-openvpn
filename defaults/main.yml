@@ -43,10 +43,10 @@ openvpn_resolv_retry: 5
 openvpn_client_to_client: false
 openvpn_nat_enabled: true
 openvpn_masquerade_not_snat: false
-openvpn_script_up: false
-openvpn_script_down: false
-openvpn_script_client_connect: false
-openvpn_script_client_disconnect: false
+openvpn_script_up:
+openvpn_script_down:
+openvpn_script_client_connect:
+openvpn_script_client_disconnect:
 openvpn_addl_server_options: []
 openvpn_addl_client_options: []
 openvpn_compression: lzo
