@@ -1,7 +1,7 @@
 client
 
 tls-client
-auth {{ openvpn_packet_authentication_algorithm }}
+auth {{ openvpn_auth_alg }}
 cipher {{ openvpn_packet_encryption_algorithm }}
 remote-cert-tls server
 {% if openvpn_use_modern_tls %}
@@ -15,7 +15,7 @@ dev tun
 resolv-retry {{ openvpn_resolv_retry }}
 nobind
 keepalive {{ openvpn_keepalive_ping }} {{ openvpn_keepalive_timeout }}
-{% if openvpn_compression|bool %}
+{% if openvpn_compression is not none %}
 compress {{ openvpn_compression }}
 {% endif %}
 persist-key

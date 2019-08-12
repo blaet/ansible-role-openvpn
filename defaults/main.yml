@@ -7,7 +7,6 @@ openvpn_server_hostname: "{{ inventory_hostname }}"
 openvpn_proto: udp
 openvpn_dualstack: true
 openvpn_rsa_bits: 2048
-openvpn_packet_authentication_algorithm: SHA256
 openvpn_packet_encryption_algorithm: AES-256-CBC
 openvpn_service_name: openvpn
 openvpn_service_user: nobody
@@ -50,6 +49,9 @@ openvpn_script_client_connect: false
 openvpn_script_client_disconnect: false
 openvpn_addl_server_options: []
 openvpn_addl_client_options: []
+openvpn_compression: lzo
+openvpn_auth_alg: SHA256
+openvpn_tun_mtu:
 
 # Used in firewalld
 firewalld_default_interface_zone: public
@@ -68,3 +70,15 @@ ldap:
   require_group: False
   group_base_dn: ou=Groups,dc=example,dc=com
   group_search_filter: (|(cn=developers)(cn=artists))
+
+# Logrotate configuration
+openvpn_log_dir: /var/log
+openvpn_log_file: openvpn.log
+openvpn_logrotate_config: |
+  rotate 4
+  weekly
+  missingok
+  notifempty
+  sharedscripts
+  copytruncate
+  delaycompress
