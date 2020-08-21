@@ -4,6 +4,11 @@
     iptables_service: netfilter-persistent
   when: (ansible_distribution == 'Debian' and ansible_distribution_version|int >= 9) or (ansible_distribution == 'Ubuntu' and ansible_lsb.major_release|int >= 16)
 
+- name: Set facts related to enabling NAT rules
+  set_fact:
+    iptables_enable_nat_rule: "{{ openvpn_nat_enabled and not openvpn_masquerade_not_snat }}"
+    iptables_enable_masquerade_rule: "{{ openvpn_nat_enabled and openvpn_masquerade_not_snat }}"
+
 - name: Install iptables-persistent (Debian/Ubuntu)
   package:
     name: iptables-persistent
@@ -65,7 +70,7 @@
     jump: SNAT
     action: insert
     comment: "Perform NAT readdressing"
-  when: not openvpn_masquerade_not_snat
+  when: iptables_enable_nat_rule
   notify: "save iptables"
 
 - name: iptables - Perform NAT readdressing with MASQUERADE
@@ -76,7 +81,7 @@
     jump: MASQUERADE
     action: insert
     comment: "Perform NAT readdressing"
-  when: openvpn_masquerade_not_snat
+  when: iptables_enable_masquerade_rule
   notify: "save iptables"
 
 - name: Save existing iptables rule before start iptables service
